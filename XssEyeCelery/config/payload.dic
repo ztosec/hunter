@@ -1,0 +1,4 @@
+<xss></xss>
+alert(65534)
+;alert(65534)
+onfocus ="alert(65534)

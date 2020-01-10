@@ -1,0 +1,981 @@
+div {
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+.top {
+    width: 0;
+    height: 0;
+    border-bottom: 2em solid #000;
+    border-right: 1.8em solid transparent;
+    border-left: 1.8em solid transparent;
+}
+
+.bottom {
+    width: 0;
+    height: 0;
+    border-top: 2em solid #000;
+    border-right: 1.8em solid transparent;
+    border-left: 1.8em solid transparent;
+}
+
+.left {
+    width: 0;
+    height: 0;
+    border-left: 2em solid #000;
+    border-bottom: 1.8em solid transparent;
+    border-top: 1.8em solid transparent;
+}
+
+.right {
+    width: 0;
+    height: 0;
+    border-right: 2em solid #000;
+    border-bottom: 1.8em solid transparent;
+    border-top: 1.8em solid transparent;
+}
+
+.bottomLeft {
+    width: 0;
+    height: 0;
+    border-width: 2em 1em;
+    border-style: solid;
+    border-color: transparent transparent #000 #000;
+}
+
+.bottomLeftRotate {
+    width: 0;
+    height: 0;
+    border-width: 2em 1em;
+    border-style: solid;
+    border-color: transparent transparent #000 #000;
+    transform: rotate(60deg);
+}
+
+.up {
+    box-sizing: border-box;
+    position: relative;
+    width: 0;
+    height: 0;
+    border-right: .9em solid transparent;
+    border-bottom: .9em solid #000;
+    border-left: .9em solid transparent;
+}
+
+.up:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: .7em;
+    margin-left: -.45em;
+    /*宽度的一半，结合 left:50%;
+    使用*/
+    width: .9em;
+    height: 1.3em;
+    background-color: #000;
+}
+
+.up_right {
+    box-sizing: border-box;
+    position: relative;
+    width: 1.3em;
+    height: .9em;
+    background-color: #000;
+}
+
+.up_right:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 1.1em;
+    margin-top: -.9em;
+    width: 0;
+    height: 0;
+    border-top: .9em solid transparent;
+    border-bottom: .9em solid transparent;
+    border-left: .9em solid #000;
+}
+
+.up_bottom {
+    box-sizing: border-box;
+    position: relative;
+    width: .9em;
+    height: 1.3em;
+    background-color: #000;
+}
+
+.up_bottom:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 1.1em;
+    margin-left: -.9em;
+    width: 0;
+    height: 0;
+    border-right: .9em solid transparent;
+    border-top: .9em solid #000;
+    border-left: .9em solid transparent;
+}
+
+.up_left {
+    box-sizing: border-box;
+    position: relative;
+    width: 0;
+    height: 0;
+    border-top: .9em solid transparent;
+    border-right: .9em solid #000;
+    border-bottom: .9em solid transparent;
+}
+
+.up_left:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    /*在绝对定位中，top:0;
+    bottom:0;
+    margin:auto;
+    结合使用能竖直居中*/
+    left: .7em;
+    margin: auto;
+    width: 1.3em;
+    height: .9em;
+    background-color: #000;
+}
+
+.true {
+    display: inline-block;
+    width: 20px;
+    height: 15px;
+    background: black;
+    line-height: 0;
+    font-size: 0;
+    vertical-align: middle;
+    -webkit-transform: rotate(45deg);
+}
+
+.true:after {
+    content: '/';
+    display: block;
+    width: 50px;
+    height: 15px;
+    background: black;
+    -webkit-transform: rotate(-90deg) translateY(-5%) translateX(35%);
+}
+
+.true_one {
+    position: relative;
+    width: 1.2em;
+    height: .3em;
+    background-color: #000;
+    transform: rotate(60deg);
+    transform-origin: right center;
+    border-radius: .15em;
+}
+
+.true_one:after {
+    content: "";
+    position: absolute;
+    top: .1em;
+    left: -.85em;
+    width: 2em;
+    height: .3em;
+    background-color: #000;
+    transform: rotate(60deg);
+    transform-origin: right center;
+    border-radius: .15em;
+}
+
+.false {
+    position: relative;
+    width: 2em;
+    height: .3em;
+    background-color: #000;
+    transform: rotate(45deg);
+    border-radius: .15em;
+}
+
+.false:after {
+    content: "";
+    position: absolute;
+    width: 2em;
+    height: .3em;
+    background-color: #000;
+    transform: rotate(90deg);
+    border-radius: .15em;
+}
+
+.menu {
+    box-sizing: border-box;
+    position: relative;
+    width: 2em;
+    height: 2em;
+    background-color: #000;
+    border-radius: .3em;
+}
+
+.menu:before {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 1.2em;
+    height: .15em;
+    background-color: #fff;
+}
+
+.menu:after {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 1.2em;
+    height: .9em;
+    border-width: .15em;
+    border-style: solid none;
+    border-color: #fff;
+}
+
+.menu2 {
+    box-sizing: border-box;
+    position: relative;
+    width: .5em;
+    height: .5em;
+    background-color: #000;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.menu2:before {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -.75em;
+    width: .5em;
+    height: .5em;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.menu2:after {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: .75em;
+    width: .5em;
+    height: .5em;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.download {
+    box-sizing: border-box;
+    position: relative;
+    width: 2em;
+    height: .8em;
+    border-width: .3em;
+    border-style: none solid solid;
+    border-color: #000;
+}
+
+.download:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: .7em;
+    left: 0;
+    margin: auto;
+    width: .3em;
+    height: 1em;
+    background-color: #000;
+}
+
+.download:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: .2em;
+    left: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    border-right: .6em solid transparent;
+    border-top: .6em solid #000;
+    border-left: .6em solid transparent;
+}
+
+.upload {
+    box-sizing: border-box;
+    position: relative;
+    width: 2em;
+    height: .8em;
+    border-width: .3em;
+    border-style: none solid solid;
+    border-color: #000;
+}
+
+.upload:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: .2em;
+    left: 0;
+    margin: auto;
+    width: .3em;
+    height: 1em;
+    background-color: #000;
+}
+
+.upload:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 1.1em;
+    left: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    border-right: .6em solid transparent;
+    border-bottom: .6em solid #000;
+    border-left: .6em solid transparent;
+}
+
+.video {
+    box-sizing: border-box;
+    position: relative;
+    width: 1.5em;
+    height: 1.2em;
+    background-color: #000;
+    border-radius: .3em;
+}
+
+.video:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 1.4em;
+    margin-top: -.7em;
+    width: 0;
+    height: 0;
+    border-top: .7em solid transparent;
+    border-right: .6em solid #000;
+    border-bottom: .7em solid transparent;
+}
+
+.voice {
+    box-sizing: border-box;
+    position: relative;
+    width: 1.4em;
+    height: 1em;
+    border-width: .2em;
+    border-style: none none solid;
+    border-color: #000;
+    border-radius: 50%;
+}
+
+.voice:before {
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: .05em;
+    margin: auto;
+    width: .8em;
+    height: 1.3em;
+    background-color: #000;
+    border-radius: .4em;
+}
+
+.voice:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -.6em;
+    left: 0;
+    margin: auto;
+    width: 0;
+    height: 0;
+    border-right: .6em solid transparent;
+    border-bottom: .4em solid #000;
+    border-left: .6em solid transparent;
+}
+
+.play {
+    box-sizing: border-box;
+    position: relative;
+    width: 2em;
+    height: 2em;
+    border: .2em solid #000;
+    border-radius: 50%;
+}
+
+.play:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: -.3em;
+    /*没有让其左右居中，因为看起来右边更空一些*/
+    width: 0;
+    height: 0;
+    border-top: .6em solid transparent;
+    border-bottom: .6em solid transparent;
+    border-left: .9em solid #000;
+}
+
+.pause {
+    box-sizing: border-box;
+    position: relative;
+    width: 2em;
+    height: 2em;
+    border: .2em solid #000;
+    border-radius: 50%;
+}
+
+.pause:before {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: -.35em;
+    width: .2em;
+    height: .9em;
+    background-color: #000;
+}
+
+.pause:after {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: .15em;
+    width: .2em;
+    height: .9em;
+    background-color: #000;
+}
+
+.previous {
+    box-sizing: border-box;
+    position: relative;
+    width: 2em;
+    height: 2em;
+    border: .2em solid #000;
+    border-radius: 50%;
+}
+
+.previous:before {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: -.65em;
+    width: 0;
+    height: 0;
+    border-top: .45em solid transparent;
+    border-bottom: .45em solid transparent;
+    border-right: .6em solid #000;
+}
+
+.previous:after {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: -.2em;
+    width: 0;
+    height: 0;
+    border-top: .45em solid transparent;
+    border-bottom: .45em solid transparent;
+    border-right: .6em solid #000;
+}
+
+.next {
+    box-sizing: border-box;
+    position: relative;
+    width: 2em;
+    height: 2em;
+    border: .2em solid #000;
+    border-radius: 50%;
+}
+
+.next:before {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: -.4em;
+    width: 0;
+    height: 0;
+    border-top: .45em solid transparent;
+    border-bottom: .45em solid transparent;
+    border-left: .6em solid #000;
+}
+
+.next:after {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: .05em;
+    width: 0;
+    height: 0;
+    border-top: .45em solid transparent;
+    border-bottom: .45em solid transparent;
+    border-left: .6em solid #000;
+}
+
+.stop {
+    box-sizing: border-box;
+    position: relative;
+    width: 2em;
+    height: 2em;
+    border: .2em solid #000;
+    border-radius: 50%;
+}
+
+.stop:after {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: .9em;
+    height: .9em;
+    background-color: #000;
+}
+
+.position {
+    position: relative;
+    width: .6em;
+    height: .6em;
+    border: .4em solid #000;
+    border-radius: 50%;
+}
+
+.position:after {
+    content: "";
+    position: absolute;
+    top: .55em;
+    left: -.4em;
+    width: 0;
+    height: 0;
+    border-top: 1em solid #000;
+    border-right: .7em solid transparent;
+    border-left: .7em solid transparent;
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+}
+
+.pc {
+    box-sizing: border-box;
+    position: relative;
+    width: 2em;
+    height: 1.4em;
+    border-width: .2em .2em .3em;
+    border-style: solid;
+    border-color: #000;
+    border-radius: .2em;
+    background-color: #efefef;
+}
+
+.pc:before {
+    content: "";
+    position: absolute;
+    top: 1.2em;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: .6em;
+    height: .4em;
+    background-color: #000;
+}
+
+.pc:after {
+    content: "";
+    position: absolute;
+    top: 1.6em;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 1.6em;
+    height: .2em;
+    background-color: #000;
+}
+
+.phone {
+    box-sizing: border-box;
+    position: relative;
+    width: 1.4em;
+    height: 2em;
+    background-color: #efefef;
+    border-width: .3em .2em .5em;
+    border-style: solid;
+    border-color: #000;
+    border-radius: .15em;
+}
+
+.phone:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -.4em;
+    left: 0;
+    margin: auto;
+    width: .5em;
+    height: .3em;
+    background-color: #fff;
+    border-radius: .3em;
+}
+
+.search {
+    box-sizing: border-box;
+    position: relative;
+    width: 1em;
+    height: .3em;
+    background-color: #000;
+    border-top-right-radius: .15em;
+    border-bottom-right-radius: .15em;
+    transform: rotate(40deg);
+    transform-origin: right center;
+}
+
+.search:before {
+    content: "";
+    position: absolute;
+    left: -1.3em;
+    bottom: -.6em;
+    width: 1em;
+    height: 1em;
+    border: .3em solid #000;
+    border-radius: 50%;
+}
+
+.star {
+    box-sizing: border-box;
+    position: relative;
+    width: 0;
+    height: 0;
+    border-top: .7em solid #000;
+    border-right: 1em solid transparent;
+    border-left: 1em solid transparent;
+}
+
+.star:before {
+    content: "";
+    position: absolute;
+    top: -.7em;
+    left: -1em;
+    width: 0;
+    height: 0;
+    border-top: .7em solid #000;
+    border-right: 1em solid transparent;
+    border-left: 1em solid transparent;
+    transform: rotate(72deg);
+}
+
+.star:after {
+    content: "";
+    position: absolute;
+    top: -.7em;
+    left: -1em;
+    width: 0;
+    height: 0;
+    border-top: .7em solid #000;
+    border-right: 1em solid transparent;
+    border-left: 1em solid transparent;
+    transform: rotate(-72deg);
+}
+
+.email {
+    box-sizing: border-box;
+    position: relative;
+    width: 0;
+    height: 0;
+    border-width: .7em 1em;
+    border-style: solid;
+    border-color: transparent transparent #000 #000;
+}
+
+.email:before {
+    content: "";
+    position: absolute;
+    top: -.7em;
+    left: 1em;
+    transform: rotateY(180deg);
+    transform-origin: left center;
+    width: 0;
+    height: 0;
+    border-width: .7em 1em;
+    border-style: solid;
+    border-color: transparent transparent #000 #000;
+}
+
+.email:after {
+    content: "";
+    position: absolute;
+    top: -.7em;
+    left: 50%;
+    margin-left: -.9em;
+    width: 0;
+    height: 0;
+    border-top: .6em solid #000;
+    border-right: .9em solid transparent;
+    border-left: .9em solid transparent;
+}
+
+.eye {
+    box-sizing: border-box;
+    position: relative;
+    width: 2em;
+    height: 1.2em;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.eye:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: .8em;
+    height: .8em;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.eye:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: .4em;
+    height: .4em;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.unlock {
+    box-sizing: border-box;
+    position: relative;
+    width: 1.6em;
+    height: 1.4em;
+    background-color: #000;
+    border-radius: .2em;
+}
+
+.unlock:before {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: -.4em;
+    right: -.4em;
+    width: 1em;
+    height: .6em;
+    border-width: .2em;
+    border-style: solid solid none;
+    border-color: #000;
+    border-radius: .5em;
+}
+
+.unlock:after {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    bottom: .2em;
+    left: 50%;
+    margin-left: -.15em;
+    width: .3em;
+    height: .5em;
+    border-top-left-radius: .25em;
+    border-top-right-radius: .25em;
+    background-color: #fff;
+}
+
+.cup {
+    box-sizing: border-box;
+    position: relative;
+    width: 1.3em;
+    height: 2em;
+    border-width: .2em .2em 1.2em;
+    border-style: solid;
+    border-color: #000;
+    background-color: #efefef;
+    border-bottom-left-radius: .3em;
+    border-bottom-right-radius: .3em;
+}
+
+.cup:before {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: .1em;
+    left: -.7em;
+    width: .7em;
+    height: 1.4em;
+    border-width: .2em;
+    border-style: solid;
+    border-color: #000;
+    border-top-left-radius: .3em;
+    border-bottom-left-radius: .3em;
+}
+
+.heart {
+    position: relative;
+    width: 1.4em;
+    height: 2em;
+    background-color: #000;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    transform: rotate(-45deg);
+    transform-origin: center bottom;
+}
+
+.heart:after {
+    content: "";
+    position: absolute;
+    top: -.7em;
+    left: -.7em;
+    width: 1.4em;
+    height: 2em;
+    background-color: #000;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
+    transform: rotate(90deg);
+    transform-origin: center bottom;
+}
+
+.home {
+    box-sizing: border-box;
+    position: relative;
+    width: 1.4em;
+    height: 1em;
+    background-color: #000;
+}
+
+.home:before {
+    content: "";
+    position: absolute;
+    top: -.7em;
+    left: 50%;
+    margin-left: -1em;
+    border-left: 1em solid transparent;
+    border-right: 1em solid transparent;
+    border-bottom: .8em solid #000;
+}
+
+.home:after {
+    z-index: 2;
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: .3em;
+    height: .5em;
+    background-color: #fff;
+}
+
+.password {
+    box-sizing: border-box;
+    position: relative;
+    width: 1.8em;
+    height: 1.4em;
+    background-color: #000;
+    border-radius: .2em;
+}
+
+.password:before {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: -.6em;
+    left: 50%;
+    margin-left: -.5em;
+    width: 1em;
+    height: 1em;
+    border: .2em solid #000;
+    border-radius: 50%;
+}
+
+.password:after {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    bottom: .2em;
+    left: 50%;
+    margin-left: -.15em;
+    width: .3em;
+    height: .5em;
+    border-top-left-radius: .25em;
+    border-top-right-radius: .25em;
+    background-color: #fff;
+}
+
+.user {
+    box-sizing: border-box;
+    position: relative;
+    width: .9em;
+    height: .9em;
+    background-color: #000;
+    border-radius: 50%;
+}
+
+.user:after {
+    content: "";
+    position: absolute;
+    top: 1em;
+    left: 50%;
+    margin-left: -.9em;
+    width: 1.8em;
+    height: 1em;
+    background-color: #000;
+    border-top-left-radius: .9em;
+    border-top-right-radius: .9em;
+}

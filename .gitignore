@@ -1,0 +1,49 @@
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+.DS_Store
+*.DS_Store
+*/.DS_Store
+### pyc ###
+*.pyc
+*/__pycache__/
+
+### HunterAdminApi ###
+/HunterAdminApi/env/
+/HunterAdminApi/.idea/
+
+### HunterAdminGui ###
+/HunterAdminGui/env/
+/HunterAdminGui/.idea/
+
+### HunterCelery ###
+/HunterCelery/env/
+/HunterCelery/.idea/
+
+### HunterSense ###
+/HunterSense/env/
+/HunterSense/.idea/
+
+### SqlmapCelery ###
+/SqlmapCelery/env/
+/SqlmapCelery/.idea/
+
+### XssEyeCelery ###
+/XssEyeCelery/env/
+/XssEyeCelery/.idea/
+
+### HunterClient ###

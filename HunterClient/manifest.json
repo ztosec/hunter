@@ -1,0 +1,60 @@
+{
+  "name": "hunter-client",
+  "version": "2.0",
+  "description": "hunter是中通信息安全部门提供的被动式安全扫描工具,其作用旨在快速、自动化地帮助非专业安全人士查找安全问题",
+  "permissions": [
+    "contextMenus",
+    "tabs",
+    "notifications",
+    "webRequest",
+    "webRequestBlocking",
+    "activeTab",
+    "declarativeContent",
+    "storage",
+    "cookies",
+    "<all_urls>",
+    "debugger"
+  ],
+  "background": {
+    "scripts": [
+      "js/lib/jquery.min.js",
+      "js/lib/mqttws31.min.js",
+      "js/background.js",
+      "js/lib/common.js"
+    ],
+    "persistent": true
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*",
+        "file://*"
+      ],
+      "match_about_blank": true,
+      "css": [
+        "css/content-script.css",
+        "css/font-awesome.min.css"
+      ],
+      "js": [
+        "js/lib/jquery.min.js",
+        "js/content-script.js",
+        "js/lib/common.js"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "browser_action": {
+    "default_icon": "images/logo_off.png",
+    "default_title": "hunter,被动黑盒扫描工具",
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "icons": {
+    "16": "images/logo_off.png",
+    "32": "images/logo_off.png",
+    "48": "images/logo_off.png",
+    "128": "images/logo_off.png"
+  },
+  "manifest_version": 2
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>hunter-client设置</title>
+    <link type="text/css" href="css/setting.css" rel="stylesheet">
+    <link type="text/css" href="css/font-awesome.min.css" rel="stylesheet">
+</head>
+<div>
+    <div id="hunter-set-pop-overLayer"></div>
+    <!-- 弹出加载特效 start -->
+    <div class="spinner" id="hunter-set-pop-box">
+        <div class="spinner-container container1">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <div class="circle4"></div>
+        </div>
+        <div class="spinner-container container2">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <div class="circle4"></div>
+        </div>
+        <div class="spinner-container container3">
+            <div class="circle1"></div>
+            <div class="circle2"></div>
+            <div class="circle3"></div>
+            <div class="circle4"></div>
+        </div>
+    </div>
+
+    <!-- 弹出加载特效 end -->
+
+    <div class="content">
+        <!-- 刷新，获取最新任务 start-->
+        <div style="text-align: right;margin-right: 10px;margin-bottom: -30px;">
+            <button type="button" id="load-task-button" title="从后台同步最新任务"><i class="fa fa-cloud-download fa-2x"
+                                                                             aria-hidden="true"></i>
+            </button>
+        </div>
+        <!-- 刷新，获取最新任务 end-->
+        <h2><img src="images/logo_off.png" style="margin: -6px 10px;width:32px">高级设置</h2>
+        <hr>
+        <table class="settings" id="setting">
+            <tr>
+                <td><label class="title">网址正则</label></td>
+                <td><input type="text" id="advanced-setting-site-input" class="range"
+                           placeholder="抓取规则,例如http://xxx.xx.com/">
+                </td>
+            </tr>
+            <tr>
+                <td><label>发送邮箱</label></td>
+                <td><input type="text" id="advanced-setting-email-input" class="range"
+                           placeholder="例如:xxx@xxxx.com"/>
+                </td>
+            </tr>
+            <tr>
+                <td><label class="title">任务名称</label></td>
+                <td><input type="text" id="advanced-setting-task-name-input" class="range"
+                           placeholder="例如:A系统v1.0安全测试任务"/>
+                </td>
+            </tr>
+            <tr>
+                <td><label>当前版本</label></td>
+                <td id="version-info"></td>
+            </tr>
+            <tr>
+                <td><label>后台地址</label></td>
+                <td id="manage-hostname"></td>
+            </tr>
+            <tr>
+                <td><label>反馈建议</label></td>
+                <td><a class="report" style="color: #1A90FF"
+                       href="http://wiki.dev.ztosys.com/pages/viewpage.action?pageId=25266466" target="_blank">遇到 bug
+                    或者有什么新想法？</a>可以点击这里给我们提建议
+                </td>
+            </tr>
+            <!-- 保存成功提示 start -->
+            <tr id="save-success-notify-panel" style="display: none">
+                <td></td>
+                <td>
+                    <div class="notify"><i class="fa fa-check-circle fa-lg" style="color: #97CD74" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>
+                        保存成功
+                    </div>
+                </td>
+
+            </tr>
+            <!-- 保存成功提示 end -->
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <button class="save-button" id="advanced-setting-save-button">保存</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+</div>
+<script type="text/javascript" src="js/lib/jquery.min.js"></script>
+<script type="text/javascript" src="js/lib/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/lib/common.js"></script>
+<script type="text/javascript" src="js/setting.js"></script>
+</body>
+</html>

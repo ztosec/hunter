@@ -1,0 +1,354 @@
+/**content-script css*/
+
+.ant-btn-primary-start {
+    color: #fff;
+    background-color: #1890ff;
+    border-color: #1890ff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+    margin-right: 8px;
+    margin-bottom: 12px;
+    line-height: 1.499;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    border: 1px solid transparent;
+    -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    cursor: pointer;
+    -webkit-transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    height: 40px;
+    padding: 0 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    color: rgba(0, 0, 0, 0.65);
+    text-transform: none;
+    color: #fff;
+    background: #1890ff;
+    margin-top: 6px;
+}
+
+.ant-btn-primary-start:hover {
+    background-color: #0070d3;
+}
+
+.ant-btn-primary-start:focus {
+    background-color: #0070d3;
+}
+
+.ant-btn-primary-start:active {
+    background-color: #0070d3;
+}
+
+#dialog-hunter-upp-overlay {
+    /* set it to fill the whil screen */
+    width: 100%;
+    height: 100%;
+    /* transparency for different browsers */
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+    background: #000;
+    /* make sure it appear behind the dialog box but above everything else */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3000;
+    /* hide it by default */
+    display: none;
+}
+
+#dialog-hunter-upp-box {
+    /* css3 drop shadow */
+    -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    /* css3 border radius */
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background: #fff;
+    /* styling of the dialog box, i have a fixed dimension for this demo */
+    /*width: 328px;*/
+    /* make sure it has the highest z-index */
+    position: absolute;
+    z-index: 5000;
+    /* hide it by default */
+    display: none;
+}
+
+#dialog-hunter-upp-box .dialog-hunter-upp-content {
+    /* style the content */
+    text-align: left;
+    padding: 10px;
+    margin: 13px;
+    color: #666;
+    font-family: arial;
+    font-size: 11px;
+
+    font-size: 14px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+#dialog-hunter-upp-box #dialog-hunter-upp-content {
+    font-size: 14px;
+    line-height: 1.5;
+    word-wrap: break-word;
+    background: #fff;
+    margin-top: 10px;
+}
+
+#dialog-hunter-upp-head {
+
+}
+
+#dialog-hunter-upp-title {
+    padding: 16px 24px;
+    color: rgba(0, 0, 0, .65);
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    border-radius: 4px 4px 0 0;
+    margin: 0;
+    color: rgba(0, 0, 0, .85);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+#dialog-hunter-upp-message {
+    /* style the message */
+    font-size: 12px;
+    color: rgba(0, 0, 0, .85);
+    font-family: simsun;
+    padding-left: 15px;
+}
+
+#dialog-hunter-upp-message .h2 {
+    /* style the message */
+    font-size: 14px;
+    color: #1d1c1c;
+    font-family: simsun;
+    padding-left: 15px;
+    margin-top: 0px;
+}
+
+#dialog-hunter-upp-message .h3 {
+    /* style the message */
+    font-size: 13px;
+    color: #1d1c1c;
+    font-family: simsun;
+    padding-left: 13px;
+    margin-top: 0px;
+}
+
+#dialog-hunter-upp-message .p {
+    /* style the message */
+    font-size: 10px;
+    color: rgba(0, 0, 0, .85);
+    font-family: simsun;
+    padding-left: 15px;
+    margin-bottom: 1px;
+    line-height: 30px;
+    font-family: Georgia, serif;
+}
+
+#dialog-hunter-upp-agree {
+    /* style the message */
+    font-size: 12px;
+    color: #e40707;
+    font-family: simsun;
+    background: #FFFFFF;
+    text-align: center;
+}
+
+#dialog-hunter-upp-area-div {
+    font-size: 13px;
+    color: rgba(0, 0, 0, .85);
+    font-family: simsun;
+    padding-left: 30px;
+    margin-bottom: 1px;
+    line-height: 30px;
+    text-align: left;
+}
+
+/**弹出停止页面**/
+
+/* extra styling */
+#dialog-hunter-upp-box .dialog-hunter-upp-content p {
+    font-weight: 700;
+    margin: 0;
+}
+
+#dialog-hunter-upp-box .dialog-hunter-upp-content ul {
+    margin: 10px 0 10px 20px;
+    padding: 0;
+    height: 50px;
+}
+
+.wrap-dialog-hunter-stop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, .4);
+    z-index: 999;
+    /*box-sizing: content-box;*/
+}
+
+.dialog-hunter-stop {
+    position: relative;
+    margin: 15% auto;
+    width: 300px;
+    background-color: #FFFFFF;
+    border-radius: 4px;
+}
+
+.dialog-hunter-stop .dialog-hunter-stop-header {
+    /*height: 20px;*/
+    padding: 16px 24px;
+    color: rgba(0, 0, 0, 0.65);
+    background: #fff;
+    border-bottom: 1px solid #e8e8e8;
+    border-radius: 4px 4px 0 0;
+}
+
+.dialog-hunter-stop .dialog-hunter-stop-body {
+    /*height: 30px;*/
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.dialog-hunter-stop .dialog-hunter-stop-footer {
+    padding: 0px;
+    background-color: #ffffff;
+    border-top: 1px solid #e8e8e8;
+    padding-top: 5px;
+}
+
+.dialog-hunter-stop .dialog-title {
+    color: #807f7f;
+    margin: 0;
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.dialog-hunter-stop .dialog-message {
+    color: #5a5a5a;
+}
+
+.dialog-message-hunter-stop {
+    color: #fff;
+}
+
+.btn-hunter-stop {
+    width: 70px;
+    padding: 2px;
+}
+
+.hide-hunter-stop {
+    display: none;
+}
+
+.ml50-hunter-stop {
+    margin-left: 50px;
+}
+
+.ant-btn-hunter-primary-stop {
+    color: #fff;
+    background-color: #1890ff;
+    border-color: #1890ff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+    margin-right: 8px;
+    margin-bottom: 12px;
+    line-height: 1.499;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    border: 1px solid transparent;
+    -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    cursor: pointer;
+    -webkit-transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    height: 30px;
+    padding: 0 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    color: rgba(0, 0, 0, 0.65);
+    text-transform: none;
+    color: #fff;
+    background: #1890ff;
+    margin-top: 6px;
+}
+
+.ant-btn-primary-stop:hover {
+    background-color: #0070d3;
+}
+
+.ant-btn-primary-stop:focus {
+    background-color: #0070d3;
+}
+
+.ant-btn-primary-stop:active {
+    background-color: #0070d3;
+}
+
+/**
+关闭按钮
+ */
+.dialog-hunter-upp-head-close {
+    /* still bad on picking color */
+    color: grey;
+    /* make a round button */
+    border-radius: 12px;
+    /* center text */
+    line-height: 20px;
+    text-align: center;
+    height: 20px;
+    width: 20px;
+    font-size: 18px;
+    padding: 1px;
+    margin: 10px;
+}
+
+/* use cross as close button */
+.dialog-hunter-upp-head-close::before {
+    content: "\2716";
+}
+
+/* place the button on top-right */
+.dialog-hunter-upp-head-close {
+    top: -10px;
+    right: -10px;
+    position: absolute;
+}

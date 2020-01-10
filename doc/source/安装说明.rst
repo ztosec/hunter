@@ -1,0 +1,263 @@
+安装说明
+======================
+Hunter分为管理后台(hunter-admin)，扫描检测引擎(hunter-consumer)，客户端(chrome，firefox插件和网络代理)。你也可以直接跳过安装教程直接使用docker-compose up启动所有环境
+
+docker使用
+--------------------
+
+为了方便整个安装运行流程，特别制作了docker镜像，在安装完docker和docker-compose的情况下，你可以直接使用官方提供的docker镜像。
+
+1.下载源码 https://github.com/ztosec/hunter
+2.进入docker目录，docker-compose up运行
+
+注意，默认登录账号密码是hunter,hunter，安装完成之后可以选择删除。使用docker后需要等hunter-admin-gui出现nginx启动成功。安装完成之后，你可以直接跳到使用教程，并查看相关内容进行学习。
+
+
+
+安装时注意事项
+---------------------
+
+如果特别说明，python3特指python3.6(请不要使用python3.x之类的其他版本)，python2特指python2.7(请不要使用python2.x之类的其他版本)。
+安装和配置mysql、redis、rabbitmq过程比较繁琐，你可以参考docker里面的安装配置脚本。比如自己安装rabbitmq之后需要建立exchange和queue之间绑定关系，
+你可以直接运行bash docker/rabbitmq/init-rabbitmq.sh 完成绑定操作。
+
+管理后台(hunter-admin)
+----------------------
+
+管理后台(hunter-admin)的安装过程分为前端和后端。
+
+管理后台(hunter-admin-api)后端安装
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.下载源码 https://github.com/ztosec/hunter
+
+2.在安装后台之前，首先安装MySql，redis，RabbitMq中间件。
+
+.. note::
+    mysql存放账户，漏洞，任务等详细信息。redis主要用去流量接口去重。RabbitMq中存放流量接口被扫描检测引擎(hunter-consumer)消费检测。
+
+本地安装好MySql和Redis之后，登录MySql建立数据库hunter，并修改源码中 HunterCloud/config/config.ini的配置文件::
+
+    [config]
+    mysql = {"host":"localhost","user":"root","password":"root","port":"3306", "database":"hunter", "max_connections": 8, "stale_timeout":300}
+    redis = {"host": "localhost", "port": "6379", "password": "redis123456", "max_connections": 20}
+    front_end = {"index": "http://127.0.0.1:3000/taskmanagement", "vuln_route": "http://127.0.0.1:3000/scanrecord/", "master_checkers_url": "http://127.0.0.1:8888/api/v1/admin/checkers/"}
+
+.. note::
+    front_end中vuln_route表示扫描结束发送的邮件模版中hunter平台链接，index表示登录成功之后跳转的首页地址
+
+
+安装RabbitMq中之后，修改HunterAdminApi/config/celery_config.py中最后一行::
+
+    broker_url="amqp://admin:hunter@127.0.0.1:5672"
+
+如果上诉MySql，redis，RabbitMq中间件安装配置完毕之后，你还需要安装相关依赖，使用pip3 install -r requirements.txt安装即可，上述操作都执行完毕之后
+可以执行python3 web_app.py即可。
+
+
+管理后台(hunter-admin-gui)前端安装
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.下载源码 https://github.com/ztosec/hunter
+
+2.进入HunterAdminGui
+
+3.修改HunterAdminGui/src/utils/request.js中const host为上文提到的管理后台(hunter-admin-api)接口主机地址即可::
+
+    //import fetch from 'whatwg-fetch';
+    import {message} from 'antd';
+
+
+    const host = "http://10.211.55.2:8888";
+    const api_prefix = "/api/";
+    const api_version = "v1";
+    global.host = host;
+
+
+4.执行npm run build生成js文件
+
+5.将生成的build目录中的文件放入到任意服务器容器即可，比如中通内部使用的是nginx，其配置大致如下::
+
+      location / {
+             root   /home/hunter/HunterAdminGui/build/;
+             try_files $uri /index.html;
+             index  index.html index.htm;
+      }
+
+       location /doc/ {
+            alias   /home/hunter/HunterDoc/build/;
+            index  index.html index.htm;
+      }
+
+
+扫描检测引擎(hunter-consumer)
+---------------------------------
+
+
+扫描检测引擎(hunter-consumer)HunterCelery模块(poc插件扫描模块)安装
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.下载源码 https://github.com/ztosec/hunter
+
+2.进入HunterCelery目录
+
+3.pip3 install -r requirements.txt
+
+4.和上文提到的 管理后台(hunter-admin-api)后端类似，HunterCelery需要修改 HunterCelery/config/config.ini和HunterCelery/config/celery_config.py 配置::
+
+    [config]
+    mysql = {"host":"localhost","user":"root","password":"root","port":"3306", "database":"hunter", "max_connections": 8, "stale_timeout":300}
+    redis = {"host": "localhost", "port": "6379", "password": "redis123456", "max_connections": 20}
+    front_end = {"index": "http://localhost:3000/taskmanagement", "vuln_route": "http://localhost:3000/scanrecord/", "master_checkers_url": "http://localhost:8888/api/v1/admin/checkers/"}
+
+
+5.运行bash start_consume.sh hunetr即可，如果无误运行后，你将看到如下
+
+
+
+.. note::
+    默认发送的邮件模版如下，由扫描检测引擎(hunter-consumer)中的HunterCelry发出，可以自己进入HunterCelery/notice/email_observer.py 修改邮件模版:
+
+
+.. image:: ../images/邮件模版.png
+    :width: 800
+
+
+
+扫描检测引擎(hunter-consumer)SqlmapCelery模块(sql注入检测模块)安装
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.下载源码 https://github.com/ztosec/hunter
+
+2.进入SqlmapCelery目录
+
+3.pip2 install -r requirements.txt
+
+4.和上文提到的 管理后台(hunter-admin-api)后端类似，HunterCelery需要修改 HunterCelery/config/config.ini和HunterCelery/config/celery_config.py 配置::
+
+    [config]
+    mysql = {"host":"localhost","user":"root","password":"root","port":"3306", "database":"hunter", "max_connections": 8, "stale_timeout":300}
+    redis = {"host": "localhost", "port": "6379", "password": "redis123456", "max_connections": 20}
+
+5.运行bash start_consume.sh sqlmap即可，如果无误运行后，你将看到如下
+
+
+
+
+扫描检测引擎(hunter-consumer)XsseyeCelery模块(xss检测模块)安装
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1.下载源码 https://github.com/ztosec/hunter
+
+2.进入XsseyeCelery目录
+
+3.pip3 install -r requirements.txt
+
+4.和上文提到的 管理后台(hunter-admin-api)后端类似，HunterCelery需要修改 HunterCelery/config/config.ini和HunterCelery/config/celery_config.py 配置::
+
+    [config]
+    mysql = {"host":"localhost","user":"root","password":"root","port":"3306", "database":"hunter", "max_connections": 8, "stale_timeout":300}
+    redis = {"host": "localhost", "port": "6379", "password": "redis123456", "max_connections": 20}
+
+5.运行bash start_consume.sh xsseye即可，如果无误运行后，你将看到如下
+
+
+客户端(chrome，firefox插件和网络代理)
+-----------------------------------------
+
+
+hunter-client
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+hunter-client: 基于chrome或者firefox浏览器的一种拓展应用，用户在使用前需要安装它。在安装成功并配置一些规则之后，用户和web应用
+交互过程中的网络请求将会被它捕获并发送到hunter-server进行漏洞检测。作为普通用户，不需要关心服务端具体是如何工作的。只需要了解怎么
+安装和使用hunter-client即可。首先需要登录到hunter后台->用户下载->客户端下载中 下载hunter-client ZIP压缩包
+
+.. image:: ../images/用户下载.png
+    :width: 800
+
+
+
+chrome下安装
++++++++++++++++++++++
+
+1.下载zip包到本地，然后解压到目录，然后来到chrome下的更多工具->拓展程序
+
+.. image:: ../images/install/install_setp_1.png
+    :width: 800
+
+2.开启开发者模式
+
+.. image:: ../images/install/install_setp_2.png
+    :width: 800
+
+3.选择以解压的拓展程序
+
+.. image:: ../images/install/install_setp_3.png
+    :width: 800
+
+4.选择hunter-client zip包解压后的目录，注意是选择目录，不是选择单个文件
+
+.. image:: ../images/install/install_setp_4.png
+    :width: 800
+
+5.安装成功后即可看到插件的信息
+
+.. image:: ../images/install/install_setp_5.png
+    :width: 800
+
+6.安装成功
+
+.. image:: ../images/install/install_setp_6.jpg
+    :width: 800
+
+.. note::
+    如图表示已经安装成功，安装成功之后可以在chrome状态栏看到hunter-client图标
+
+
+
+
+
+支持浏览器以及版本
++++++++++++++++++++++
+
+.. image:: ../images/install/chrome.png
+    :width: 50
+
+*所有版本*
+
+.. image:: ../images/install/firefox.png
+    :width: 50
+
+*暂不支持*
+
+
+hunter-proxy
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+hunter还是支持传统被动扫描器中的网络代理模式，但是默认关闭，需要管理员进入HunterCloud/networkproxy/目录 运行python3 proxy_server.py 开启，默认端口是8088
+
+在管理员开启代理之后，用户浏览器配置代理(不同浏览器之间可能不同，但大同小异)。
+
+
+chrome配置代理
++++++++++++++++++++++
+
+浏览器配置代理，支持跨平台，跨浏览器，以下以chrome为例:
+
+.. image:: ../images/install/proxy_setp1.png
+    :width: 800
+
+
+.. image:: ../images/install/proxy_setp2.png
+    :width: 800
+
+如果需要支持https代理，请安装证书，配置代理之后访问 http://hunterca/下载证书
+
+.. image:: ../images/install/proxy_setp3.png
+    :width: 800
+
+下载证书之后，和其他https透明代理工具类似，需要导入并信任根证书，具体可以搜索 浏览器(https)安装受信任的证书详细步骤
+
+
+

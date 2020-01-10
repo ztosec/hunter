@@ -1,0 +1,103 @@
+version: '2'
+# 多个服务启动
+services:
+  hunter-mysql:
+    image: bsmali4/hunter-mysql:2.0
+    ports:
+      - "3306:3306"
+    container_name: hunter-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql123456
+    command: bash init-mysql.sh
+
+  hunter-rabbitmq:
+    image: bsmali4/hunter-rabbitmq:2.0
+    ports:
+     - "5671:5671"
+     - "5672:5672"
+     - "4369:4369"
+     - "25672:25672"
+     - "15674:15674"
+     - "15670:15670"
+     - "15671:15671"
+     - "15672:15672"
+     - "61613:61613"
+    container_name: hunter-rabbitmq
+    command: admin rabbitmq123456
+
+  hunter-redis:
+    image: bsmali4/hunter-redis:2.0
+    ports:
+     - "6379:6379"
+    container_name: hunter-redis
+    command: redis123456
+
+  hunter-sense:
+    image: bsmali4/hunter-sense:2.0
+    ports:
+      - "8837:80"
+      - "7799:7799"
+      - "53:53"
+    container_name: hunter-sense
+    command: admin admin888 hunter-log-token
+
+  hunter-admin-api:
+    image: bsmali4/hunter-admin-api:2.0
+    container_name: hunter-admin-api
+    depends_on:
+      - hunter-mysql
+      - hunter-rabbitmq
+      - hunter-redis
+    ports:
+     - "8888:8888"
+     - "8088:8088"
+    environment:
+      RABBITMQ_USER: admin
+      RABBITMQ_PASSWORD: rabbitmq123456
+      RABBITMQ_PORT: 5672
+      MYSQL_ROOT_PASSWORD: mysql123456
+      REDIS_PASSWORD: redis123456
+      INDEX_URL: http://127.0.0.1:3000/taskmanagement
+      VULN_ROUTE: http://127.0.0.1:3000/scanrecord/
+    links:
+      - hunter-mysql:hunter_mysql_host
+      - hunter-rabbitmq:hunter_rabbitmq_host
+      - hunter-redis:hunter_redis_host
+    #command: tail -f /dev/null
+    command: bash /usr/local/bin/docker-entrypoint.sh
+
+  hunter-admin-gui:
+    image: bsmali4/hunter-admin-gui:2.0
+    container_name: hunter-admin-gui
+    depends_on:
+      - hunter-admin-api
+    links:
+      - hunter-admin-api:hunter_admin_api_host
+    ports:
+     - "3000:80"
+    command: bash /usr/local/bin/docker-entrypoint.sh -back_end_url http://127.0.0.1:8888 -build true
+
+  hunter-consumer:
+    image: bsmali4/hunter-consumer:2.0
+    container_name: hunter-consumer-1
+    depends_on:
+      - hunter-mysql
+      - hunter-rabbitmq
+      - hunter-redis
+      - hunter-admin-api
+    environment:
+      RABBITMQ_USER: admin
+      RABBITMQ_PASSWORD: rabbitmq123456
+      RABBITMQ_PORT: 5672
+      RABBITMQ_API_PORT: 15672
+      MYSQL_ROOT_PASSWORD: mysql123456
+      FRONT_END_HOST: 127.0.0.1:3000
+      REDIS_PASSWORD: redis123456
+    links:
+      - hunter-admin-api:hunter_admin_api_host
+      - hunter-mysql:hunter_mysql_host
+      - hunter-rabbitmq:hunter_rabbitmq_host
+      - hunter-redis:hunter_redis_host
+      - hunter-sense:hunter_sense_host
+
+    command: bash /usr/local/bin/docker-entrypoint.sh

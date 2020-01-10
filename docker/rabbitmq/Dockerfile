@@ -1,0 +1,20 @@
+ARG IMAGE_BASE="rabbitmq"
+ARG IMAGE_TAG="3.8-management"
+FROM ${IMAGE_BASE}:${IMAGE_TAG}
+
+COPY init-rabbitmq.sh /usr/local/bin/
+RUN apt-get update --fix-missing -y &&\
+    apt-get install gcc -y &&\
+    apt-get install libc6-dev curl wget vim -y &&\
+    chmod +x /usr/local/bin/init-rabbitmq.sh
+
+EXPOSE 5671 5671
+EXPOSE 5672 5672
+EXPOSE 4369 4369
+EXPOSE 25672 25672
+EXPOSE 15674 15674
+EXPOSE 15670 15670
+EXPOSE 15671 15671
+EXPOSE 15672 15672
+EXPOSE 61613 61613
+ENTRYPOINT ["init-rabbitmq.sh"]

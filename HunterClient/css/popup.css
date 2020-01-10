@@ -1,0 +1,258 @@
+/**
+插件布局css
+ */
+body {
+    margin-bottom: 0px;
+}
+
+ul {
+    padding: 0;
+    margin-top: -5px;
+    margin-bottom: 0px;
+}
+
+li {
+    list-style-type: none;
+    white-space: nowrap;
+    padding: 2px 12px;
+    border-radius: 4px;
+    height: 40%;
+    width: 100px;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+    outline: none;
+}
+
+button, select {
+    text-transform: none;
+}
+
+a.hover {
+    /*text-decoration: underline;*/
+}
+
+.ant-btn-primary-set {
+    box-sizing: border-box;
+    position: relative;
+    width: 1.5em;
+    height: 1.5em;
+    border: .15em dotted #ffffff;
+    border-radius: 50%;
+    color: #ffffff;
+}
+
+.ant-btn-primary-set:after {
+    content: "";
+    position: absolute;
+    width: .8em;
+    height: .8em;
+    left: 50%;
+    background: #ffffff;
+    -moz-border-radius: .8em;
+    -webkit-border-radius: .8em;
+    border-radius: .8em;
+    margin-left: -.399em;
+    margin-top: .2em;
+    margin-bottom: auto;
+}
+
+.ant-btn-primary-set:before {
+    content: "";
+    position: absolute;
+    width: 1.18em;
+    height: 1.18em;
+    left: 50%;
+    background: transparent;
+    -moz-border-radius: .8em;
+    -webkit-border-radius: .8em;
+    border-radius: .8em;
+    margin-left: -.67em;
+    margin-top: -0.09em;
+    margin-bottom: auto;
+    border: #ffffff 0.09em solid;
+}
+
+.ant-btn-primary-start {
+    color: #fff;
+    background-color: #1890ff;
+    border-color: #1890ff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+    margin-right: 8px;
+    margin-bottom: 8px;
+    line-height: 1.499;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    border: 1px solid transparent;
+    -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    cursor: pointer;
+    -webkit-transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    height: 25px;
+    padding: 0 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    color: rgba(0, 0, 0, 0.65);
+    text-transform: none;
+    color: #fff;
+    background: #1890ff;
+}
+
+.ant-btn-primary-start:hover {
+    background-color: #3b9cf7;
+    color: white;
+}
+
+.ant-btn-primary-start:active {
+    background-color: #3b9cf7;
+    color: white;
+}
+
+.ant-btn-primary-start:focus {
+    background-color: #0b82e4;
+    color: white;
+    outline: none;
+}
+
+.ant-btn-primary-end {
+    color: #fff;
+    background-color: #DB092F;
+    border-color: #DB092F;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+    margin-right: 8px;
+    margin-bottom: 12px;
+    line-height: 1.499;
+    position: relative;
+    display: inline-block;
+    font-weight: 400;
+    white-space: nowrap;
+    text-align: center;
+    background-image: none;
+    border: 1px solid transparent;
+    -webkit-box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.015);
+    cursor: pointer;
+    -webkit-transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    transition: all .3s cubic-bezier(.645, .045, .355, 1);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    height: 25px;
+    padding: 0 15px;
+    font-size: 14px;
+    border-radius: 4px;
+    color: rgba(0, 0, 0, 0.65);
+    text-transform: none;
+    color: #fff;
+}
+
+.ant-btn-primary-end:hover {
+    background-color: #d6425b;
+    color: white;
+}
+
+.ant-btn-primary-end:active {
+    background-color: #d6425b;
+    color: white;
+}
+
+.ant-btn-primary-end:focus {
+    background-color: #BF0A2C;
+    color: white;
+    outline: none;
+}
+
+/**开始图标**/
+.start-label {
+    box-sizing: border-box;
+    position: relative;
+    width: 1.3em;
+    height: 1.3em;
+    border: .107em solid #ffffff;
+    border-radius: 50%;
+}
+
+.start-label:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: -.225em;
+    width: 0;
+    height: 0;
+    border-top: .40em solid transparent;
+    border-bottom: .40em solid transparent;
+    border-left: .67em solid #ffffff;
+}
+
+
+.stop-label {
+    box-sizing: border-box;
+    position: relative;
+    width: 1.3em;
+    height: 1.3em;
+    border: .107em solid #ffffff;
+    border-radius: 50%;
+}
+
+.stop-label:after {
+    box-sizing: border-box;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: .58em;
+    height: .56em;
+    background-color: #ffffff;
+}
+
+
+.play {
+    box-sizing: border-box;
+    position: relative;
+    width: 2em;
+    height: 2em;
+    border: .2em solid #000;
+    border-radius: 50%;
+}
+.play:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: -.3em; /*没有让其左右居中，因为看起来右边更空一些*/
+    width: 0;
+    height: 0;
+    border-top: .6em solid transparent;
+    border-bottom: .6em solid transparent;
+    border-left: .9em solid #000;
+}
