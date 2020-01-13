@@ -208,7 +208,7 @@ export default class ManageIndexPage extends Component {
                                     <Route path="/manage/datachart" component={AdminStaticsChar}/>
                                     <Route path="/manage/client" component={ClientManagePage} />
                                     <Route path="/manage/scanrecord/userid/:userid" component={AdminScanRecordTable}/>
-                                    <Redirect from="/" to="/taskmanagement"/>
+                                    //<Redirect from="/" to="/taskmanagement"/>
                                 </Switch>
                             </Content>
                             <Footer style={{textAlign: 'center'}}>
