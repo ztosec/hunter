@@ -19,7 +19,7 @@ Flask-HTTPAuth==3.2.4
 idna==2.6
 imagesize==1.0.0
 itsdangerous==0.24
-Jinja2==2.10.3
+Jinja2==2.11.3
 kombu==4.1.0
 ldap3==2.6
 MarkupSafe==1.0
