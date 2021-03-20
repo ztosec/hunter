@@ -13,7 +13,7 @@ get==2019.4.13
 idna==2.8
 imagesize==1.1.0
 itsdangerous==1.1.0
-Jinja2==2.10.1
+Jinja2==2.11.3
 MarkupSafe==1.1.1
 packaging==19.1
 peewee==3.9.6
