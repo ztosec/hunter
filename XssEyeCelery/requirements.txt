@@ -1,7 +1,7 @@
 amqp==2.5.1
 appdirs==1.4.3
 billiard==3.6.1.0
-celery==4.3.0
+celery==5.2.2
 certifi==2019.9.11
 chardet==3.0.4
 colorlog==4.0.2
