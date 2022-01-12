@@ -6,7 +6,7 @@ certifi==2019.6.16
 chardet==3.0.4
 Click==7.0
 colorlog==4.0.2
-dnslib==0.9.10
+dnslib==0.9.17
 docutils==0.15.2
 Flask==1.1.1
 get==2019.4.13
