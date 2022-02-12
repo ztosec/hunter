@@ -39,7 +39,7 @@ RUN mkdir -p /home/hunter/HunterAdminGui/
 COPY package.json /home/hunter/HunterAdminGui/
 
 RUN cd /home/hunter/HunterAdminGui &&\
-    npm config set registry http://registry.npm.taobao.org &&\
+    npm config set registry https://registry.npmmirror.com &&\
     npm install
 
 RUN rpm -Uvh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm &&\
